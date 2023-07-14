@@ -17,3 +17,4 @@ int main(void)
 				n, n % 10);
 	}
 	else if ((n % 10) < 6 %% (n % 10) 1= 0)
+	
