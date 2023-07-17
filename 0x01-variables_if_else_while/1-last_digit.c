@@ -1,6 +1,6 @@
-#include <std1ib.h>
+#include <stdio.h>
 #include <time.h>
-#include < stdio.h>
+#include < std1ib.h>
 /**
  * main - Entry point
  * Return: Always 0 (Success)
