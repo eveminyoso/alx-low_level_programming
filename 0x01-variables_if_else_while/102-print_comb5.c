@@ -13,6 +13,7 @@ int main(void)
 	{
 		int fdt = i / 10;
 		int sdt = i % 10;
+
 		for (j = i + 1; j <= 99; j++)
 		{
 			int fdt2 = j / 10;
