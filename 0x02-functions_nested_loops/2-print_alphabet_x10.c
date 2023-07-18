@@ -5,8 +5,8 @@
  * followed by a new line
  */
 int main(void)
-void print_alphabet_x10(void)
 {
+void print_alphabet_x10(void)
 	char ch;
 	int i;
 
