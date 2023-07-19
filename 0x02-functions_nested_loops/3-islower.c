@@ -1,4 +1,4 @@
-nclude "main.h"
+#nclude "main.h"
 
 /**
  * _islower - checks for lowercase character
