@@ -7,7 +7,7 @@
  */
 int _islower(int c)
 {
-	// implementation of the function...
+	implementation of the function
 }
 {
 	if (c >= 'a' && c <= 'z')
