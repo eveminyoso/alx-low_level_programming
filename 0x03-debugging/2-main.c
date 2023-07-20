@@ -19,5 +19,5 @@ int main(void)
 
 	printf("%d is the largest number\n", largest);
 
-	eturn (0);
+	return (0);
 }
