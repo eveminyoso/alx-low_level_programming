@@ -7,14 +7,14 @@
  */
 void print_rev(char *s)
 {
-	int long = 0
+	int longi = 0
 
 	while (*s != '\0')
 	{
-		long++;
+		longi++;
 		s++;
 	}
-	for (0 = long > 0; 0--)
+	for (o -= longi > 0; o--)
 	{
 		putchar(*s);
 		s--;
