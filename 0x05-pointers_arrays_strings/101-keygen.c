@@ -20,13 +20,13 @@ void generatePassword(char *pswd, int len)
 }
 int main()
 {
-	int passwordLength;
-	char pswd[MAX_PASSWORD_LENGTH + 1];
+	/*int pswdLength;*/
+	/*char pswd[MAX_PASSWORD_LENGTH + 1]*/;
 
-	srand((unsigned int)time(NULL));
-	passwordLength = 10;
+	/*srand((unsigned int)time(NULL));*/
+	/*pswdLength = 10;*/
 
-	generatePassword(pswd, passwordLength);
+
 	printf("Tada! Congrats\n");
 	return (0);
 }
