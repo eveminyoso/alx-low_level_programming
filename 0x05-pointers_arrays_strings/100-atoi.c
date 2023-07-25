@@ -1,49 +1,50 @@
 #include "main.h"
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * _atoi - convert a string to an integer
- * @s: string to be converted
+ * _atoi - Converts a string to an integer
+ * @s: Pointer to the string
  *
- * Return: the int converted from string
+ * Return: The converted string
  */
 int _atoi(char *s)
 {
-	int i, d, n, len, f, digit;
+	int sign = 1; /*Initializing the sign to positive by default*/
+	int result = 0;
+	int digit;
 
-	i = 0;
-	d = 0;
-	n = 0;
-	len = 0;
-	f = 0;
-
-	while (s[len] != '\0')
+	/*Step 1: Handling whitespace characters*/
+	while (*s == ' ')
 	{
-		len++;
+		s++;
 	}
 
-	while (i < len && f == 0)
+	/*Step 2: Handling the sign*/
+	while (*s == '+' || *s == '-')
 	{
-		if (s[i] == '-')
+		if (*s == '-')
 		{
-			++d;
+			sign *= -1 ;/* Change the sign if a '-' is encountered*/
 		}
+		s++;
+	}
 
-		if (s[i] >= '0' && s[i] <= '9')
+	/*Step 3: Converting the sequence of digits to an integer*/
+	while (*s >= '0' && *s <= '9')
+	{
+		digit = *s - '0'; /* Convert the character digit to an integer digit*/
+		 /* Check for overflow before updating the result*/
+		if (result > INT_MAX / 10 || (result == INT_MAX / 10 && digit > INT_MAX % 10))
 		{
-			digit = s[i] - '0';
-			if (d % 2)
-			{
-			       digit = -digit;
-			}
-			       n = n * 10 + digit;
-			       f = 1;
-			}
-			if (s[i + 1] < '0' || s[i + 1] > '9')
-			{
-					break;
-
-			}
-			i++;
+			/* Overflow, return INT_MAX for positive or INT_MIN for negative*/
+			return ((sign == 1) ? (INT_MAX) : (INT_MIN));
 		}
-		return (n);
+		result = result * 10 + digit;/*Update the result*/
+		s++;
+	}
+
+	/*Step 4: Return the resulting integer with the correct sign*/
+	return (result * sign);
 }
