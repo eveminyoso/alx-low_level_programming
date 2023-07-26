@@ -1,18 +1,21 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * main - check the code
+ * _strcmp - compares two given strings
+ * @s1:String one
+ * @s2:String two
  *
- * Return: Always 0.
+ * Return: Their difference in ASCII values
  */
-int main(void)
+int _strcmp(char *s1, char *s2)
 {
-    char s1[] = "Hello";
-    char s2[] = "World!";
+	/*Checking how the two strings compare*/
 
-    printf("%d\n", _strcmp(s1, s2));
-    printf("%d\n", _strcmp(s2, s1));
-    printf("%d\n", _strcmp(s1, s1));
-    return (0);
+	while (*s1 != '\0' && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	/*Their difference in ascii values*/
+	return (*s1 - *s2);
 }
