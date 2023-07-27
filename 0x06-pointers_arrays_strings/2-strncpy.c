@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 #include <stdio.h>
 /**
  * *_strncpy - copies the last line of the string
@@ -11,16 +12,15 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	char *result = dest;/*Saving the first address*/
+	int i;
 
-	/*Copying up to n characters from src to dest*/
-
-	while (*src != '\0' && n > 0)
+	for (i = 0; i < n && src[i] != '\0'; i++)
 	{
-		*dest = *src;
-		dest++;
-		src++;
-		n--;
+		dest[i] = src[i];
 	}
-	return (result);
+	for (; i < n; i++)
+	{
+		dest[i] = '\0';
+	}
+	return (dest);
 }
