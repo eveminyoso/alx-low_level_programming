@@ -5,7 +5,7 @@
  * followed by a new line
  * @s: string to print
  *
- * Return: Nothing.
+ * Return: Nothing
  */
 void _puts_recursion(char *s);
 {
