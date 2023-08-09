@@ -1,43 +1,46 @@
 #include "main.h"
-#include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
+#include <stdlib.h>
 /**
- * argstostr - concatenates all arguments of your program
- * @ac: argument count
- * @av: argument vector
- * Return: pointer to a new string
+ * argstostr - concatinates all arguements of a string
+ * @ac: arguement count
+ * @av: arguement array
+ *
+ * Return:s
  */
 char *argstostr(int ac, char **av)
 {
-	int i, n, l = 0, r = 0;
-
-	char *str;
+	char *s;
+	int i, j;
+	int c;
 
 	if (ac == 0 || av == NULL)
-			return (NULL);
-
-	for (i = 0; i < ac; i++)
 	{
-		for (n = 0; av[i][n]; n++)
-			l++;
-	}
-	l += ac;
-
-	str = malloc(sizeof(char) * (l + 1));
-	if (str == NULL)
 		return (NULL);
-	for (i = 0; i < ac; i++)
-	{
-	for (n = 0; av[i][n]; n++)
-	{
-		str[r] = av[i][n];
-		r++;
 	}
-	str[r] = '\n';
-		r++;
-	}
-	str(r) = '\0';
 
-	return (str);
+	for (j = 0; j < ac; j++)
+	{
+		if (*av[j] != '\0')
+		{
+			c += *av[j] + 1;
+		}
+	}
+
+	s = (char *)malloc(c);
+	if (s == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < ac; ++i)
+	{
+		if (*av[i] != '\0' && av[i - 1])
+		{
+			*s = *av[i];
+			printf("%s\n", av[i]);
+		}
+	}
+	s[i] = '\0';
+	return (s);
 }
