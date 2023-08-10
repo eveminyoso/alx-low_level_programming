@@ -12,12 +12,12 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	int *n;
 
-	n = (int *)calloc(nmemb, size);
-	if (n == NULL)
+	if (nmemb == 0 || size == 0)
 	{
 		return (NULL);
 	}
-	if (nmemb == 0 || size == 0)
+	n = (int *)calloc(nmemb, size);
+	if (n == NULL)
 	{
 		return (NULL);
 	}
