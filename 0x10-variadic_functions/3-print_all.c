@@ -31,7 +31,7 @@ void print_all(const char * const format, ...)
 				{
 					it = "(nil)";
 				}
-				printf("%s%s", nem, va_arg(ap, char*));
+				printf("%s%s", nem, it);
 				break;
 			default:
 				i++;
