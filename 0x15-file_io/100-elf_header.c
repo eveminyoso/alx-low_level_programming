@@ -14,14 +14,14 @@ void print_error(const char *message)
 
 void display_elf_header(const char *filename)
 {
+	int i;
+	Elf64_Ehdr elf_header;
 	int fd = open(filename, O_RDONLY);
 
 	if (fd == -1)
 	{
 		print_error("Failed to open file");
 	}
-
-	Elf64_Ehdr elf_header;
 
 	if (read(fd, &elf_header, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 	{
@@ -36,7 +36,7 @@ void display_elf_header(const char *filename)
 	}
 
 	printf("Magic: ");
-	for (int i = 0; i < EI_NIDENT; i++)
+	for (i = 0; i < EI_NIDENT; i++)
 	{
 		printf("%02x ", elf_header.e_ident[i]);
 	}
