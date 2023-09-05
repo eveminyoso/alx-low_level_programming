@@ -1,18 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "main.h"
 /**
- *read_textfile - function that reads a text file and prints it
- *@filename: file
- *@: number to be printed
- *Return: amount of bites
+ *read_textfile - reads a text file and prints to stdout
+ *@filename:the file
+ *@letters:number of letters to print
+ *
+ *Return:total bytes read
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
 	char *buffer;
-	ssize_t br, bw, tbr = 0;
+	ssize_t br, bw;
 
 	if (filename == NULL)
 	{
@@ -29,18 +27,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-	while ((br = read(fd, buffer, letters)) > 0)
+	br = read(fd, buffer, letters);
+	bw = write(STDOUT_FILENO, buffer, br);
+	if (bw == -1 || bw != br)
 	{
-		bw = write(STDOUT_FILENO, buffer, br);
-		if (bw == -1 || bw != br)
-		{
-			close(fd);
-			free(buffer);
-			return (0);
-		}
-		tbr += bw;
+		close(fd);
+		free(buffer);
+		return (0);
 	}
 	close(fd);
 	free(buffer);
-	return (tbr);
+	return (br);
 }
