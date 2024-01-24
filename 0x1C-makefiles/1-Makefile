@@ -1,27 +1,18 @@
-# Makefile for 'school' executable
+CC = gcc
+CFLAGS = -Wall -Werror
 
-# Compiler
-CC ?= gcc
 
-# Source files
-SRC = main.c file1.c file2.c  # Add your source files here
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
 
-# Object files
-OBJS = $(SRC:.c=.o)
 
-# Target executable
-TARGET = school
+all: school
 
-# Rule to build the executable
-all: $(TARGET)
+school: $(OBJ)
+	$(CC) $(CFLAGS) -o school $(OBJ)
 
-$(TARGET): $(OBJS)
-	$(CC) -o $@ $(OBJS)
-
-# Rule to build object files from source files
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean rule to remove generated files
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f school $(OBJ)
