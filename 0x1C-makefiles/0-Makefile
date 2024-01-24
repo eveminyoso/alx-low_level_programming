@@ -1,1 +1,10 @@
+CC = gcc
+CFLAGS = -Wall -Werror
 
+all: school
+
+school: main.c school.c
+	$(CC) -c $(CFLAGS) school.c -o school
+
+clean:
+	rm -f school *.o
