@@ -1,32 +1,54 @@
+# Makefile for school project
+
+# Compiler
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic
-SRC = main.c  school.c
+
+# Source files
+SRC = main.c utils.c other.c
+
+# Object files
 OBJ = $(SRC:.c=.o)
+
+# Executable name
 NAME = school
 
+# Program to delete files
+RM = /bin/rm -f
 
+# Compiler flags
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Default target
 all: $(NAME)
 
+# Build the executable
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
 
-clean:
-	@$(RM) *~ $(NAME)
-
-oclean:
-	@$(RM) $(OBJ)
-
-fclean: clean oclean
-	@$(RM) $(NAME)
-
-re: clean all
-
-$(OBJ): m.h
-
-RM = rm -f
-
-CC_CMD = $(CC)
-CFLAGS_CMD = $(CFLAGS)
-
+# Compile source files to object files
 %.o: %.c
-	$(CC_CMD) $(CFLAGS_CMD) -c $< -o $@
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+# Delete Emacs, Vim, executable, and object files
+clean:
+	$(RM) *~ \#*\# $(NAME)
+
+# Delete object files
+oclean:
+	$(RM) $(OBJ)
+
+# Delete Emacs, Vim, executable, and object files
+fclean: clean oclean
+
+# Force recompilation of all source files
+re: fclean all
+
+# Dependencies
+main.o: main.c m.h
+utils.o: utils.c m.h
+other.o: other.c m.h
+
+# Ensure m.h exists
+m.h:
+	@echo "Error: Header file m.h is missing."
+	@exit 1
